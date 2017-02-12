@@ -44,10 +44,7 @@ class JobAd(object):
 		self.company=properties['company']
 		self.location=properties['location']
 		self.date=properties['date']
-		self.score=0
-		self.matching_words=[]
-		self.exp_req= None
-		self.qually_rec = False
+
 		# self.keywords = []
 
 	@staticmethod
@@ -74,21 +71,9 @@ class JobAd(object):
 				'location': result['formattedLocation'],
 				'date': result['date']
 				})) 
-		for job_ad in job_ads:
-			try:
-				cj=CachedJob.objects.get(key=job_ad.key)
-				job_ad.content = cj.content
-				#added this
-				job_ad.exp_req = cj.exp_req
-				job_ad.keywords = cj.keywords.all().values_list('name', flat=True)
-			except CachedJob.DoesNotExist:  
+		for job_ad in job_ads: 
 				job_ad.content=job_ad.set_content()
-				#added this
-				print "I had to set experience required"
 				
-				job_ad.exp_req=job_ad.set_exp_req()
-				print "experience required is : ", job_ad.exp_req
-				job_ad.keywords=[]
 		return job_ads
 	
 	def set_content(self):	
@@ -100,7 +85,6 @@ class JobAd(object):
 	    print job_ad_text
 	    return job_ad_text
 
-	@staticmethod
 	def to_s(tb):
 		return ('\t' + str(tb))
 	

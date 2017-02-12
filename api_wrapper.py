@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 import os
-from os.path import join, dirname
 
 from jobs.job_ad import JobAd
 
-from django.conf import settings
 
 import sys  
-import re
 
 import urllib2
 from textblob import TextBlob as tb
