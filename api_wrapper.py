@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 import os
 
-from jobs.job_ad import JobAd
+from job_ad import JobAd
 
 
 import sys  
@@ -14,6 +14,8 @@ import requests
 import unidecode
 reload(sys)  
 sys.setdefaultencoding('utf8')
+
+import secrets
 
 class QuallyApiWrapper(object):   
 	

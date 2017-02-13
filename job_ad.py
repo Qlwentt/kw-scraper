@@ -85,10 +85,6 @@ class JobAd(object):
 	    print job_ad_text
 	    return job_ad_text
 
-	def to_s(tb):
-		return ('\t' + str(tb))
-	
-
 
 # # indeed_request_url="http://api.indeed.com/ads/apisearch?publisher=9253729351823762&q=software engineer&l=seattle%2C+wa&sort=&radius=&st=&jt=&start={}&limit=1000&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json"
 # # APIresponse = requests.get(indeed_request_url).json()['results']

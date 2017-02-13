@@ -13,6 +13,10 @@ import time
 import os
 import csv
 
+import sys
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 class KeywordScraper(object):
 
 	@staticmethod
@@ -54,20 +58,15 @@ class KeywordScraper(object):
 		Emphasis on collaboration, leadership, Agile practices, and computer science fundamentals.
 		PAST EXPERIENCE
 
-		Research Assistant Veterans Affairs Health Care System (April 2015 – June 2016)
-
 		Assisted in database management
 		Wrote an Excel VBA macro that extracts patient data from a database and outputs a personalized report
-		Technical Writer Associate (Intern) Qualcomm (October 2014 – December 2014)
 
 		Edited internal documents for proper format, legal statements, and language mechanics according to style guide
 		Edited engineering white papers for content, structure, and spelling/grammar
 		Distinguished performance at internship; (Read recommendation on LinkedIn)
-		Freelance Writer/Editor Independent Contractor (January 2014 – August 2016)
 
 		Wrote marketing copy, website content, and white papers
 		Edited academic papers in various writing styles (APA, MLA, Chicago, AMA) for submission to peer-reviewed journals
-		Chemical Defense Program Manager US Army (March 2013 – January 2014)
 
 		Ensured unit preparation for a chemical, biological, or nuclear attack by:
 		planning and executing training exercises
@@ -75,7 +74,6 @@ class KeywordScraper(object):
 		inspecting lower level units and assisting them with meeting standards
 		giving biweekly presentations regarding status of program
 		Rebuilt a failing program into the most improved program in the organization in a matter of months
-		Platoon Leader US Army (October 2012 – March 2013)
 
 		Managed of a platoon of 25 soldiers in preparation for overseas deployment
 		EDUCATION
@@ -125,12 +123,11 @@ class KeywordScraper(object):
 		return keywords
 
 	@staticmethod
-	def add_keywords_to_csv(keywords, cat):
+	def write_kws_to_csv(keywords, cat):
+		output = open("keywords.csv", "a")
+		writer = csv.writer(output)
 		for kyword in keywords:
-			try:
-				Keyword.objects.get(name=kyword)
-			except Keyword.DoesNotExist: 
-				Keyword.objects.create(name=kyword, category=cat)
+			writer.writerow([kyword, cat])
 
 
 
